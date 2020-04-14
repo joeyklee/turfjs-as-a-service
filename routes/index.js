@@ -15,6 +15,7 @@ api.post("/collect", async (req, res) => {
     let polygons;
 
     if (typeof inPoints !== "object") {
+      console.log(inPoints)
       points = await axios.get(inPoints);
       points = await points.data;
     } else {
