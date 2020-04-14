@@ -1,7 +1,7 @@
-import express from 'express';
-import turf from '@turf/turf';
-import morgan from 'morgan';
-import {PORT} from './config';
+const express = require('express');
+const turf = require('@turf/turf');
+const morgan = require('morgan');
+const {PORT} = require('./config');
 
 const app = express();
 
@@ -30,6 +30,6 @@ app.post('/api/v1/turf-collect', async (req, res) => {
 
 
 app.listen(PORT, ()=>{
-  `see the magic: https://localhost:${PORT}`
+  console.log(`see the magic: https://localhost:${PORT}`);
 })
 
