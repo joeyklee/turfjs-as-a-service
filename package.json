@@ -1,0 +1,29 @@
+{
+  "name": "turfjs-api",
+  "version": "1.0.0",
+  "description": "Node/Express API to run Turfjs on Glitch",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "dev":"nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joeyklee/turfjs-api.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joeyklee/turfjs-api/issues"
+  },
+  "homepage": "https://github.com/joeyklee/turfjs-api#readme",
+  "dependencies": {
+    "@turf/turf": "^5.1.6",
+    "express": "^4.17.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.3"
+  }
+}
