@@ -12,8 +12,8 @@
     "type": "git",
     "url": "git+https://github.com/joeyklee/turfjs-api.git"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "@joeyklee",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/joeyklee/turfjs-api/issues"
   },
