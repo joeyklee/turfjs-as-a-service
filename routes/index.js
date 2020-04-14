@@ -18,14 +18,14 @@ api.post("/collect", async (req, res) => {
       points = await axios.get(inPoints);
       points = await points.data;
     } else {
-      points = Object.assign(inPoints);
+      points = Object.assign({...inPoints});
     }
 
     if (typeof inPolygons !== "object") {
       polygons = await axios.get(inPolygons);
       polygons = await polygons.data;
     } else {
-      polygons = Object.assign(polygons);
+      polygons = Object.assign({...inPolygons});
     }
 
     // spatial join

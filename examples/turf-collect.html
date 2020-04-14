@@ -1,0 +1,65 @@
+<html>
+  <head> </head>
+  <body>
+    <h1>turf-collect w/ geojson</h1>
+    <script>
+      const points = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: { counts: 10 },
+            geometry: {
+              type: "Point",
+              coordinates: [-73.9324951171875, 40.78678041401646],
+            },
+          },
+        ],
+      };
+      const polygons = {
+        type: "FeatureCollection",
+        features: [
+          {
+            type: "Feature",
+            properties: {},
+            geometry: {
+              type: "Polygon",
+              coordinates: [
+                [
+                  [-74.40765380859375, 40.34026396683983],
+                  [-73.2183837890625, 40.34026396683983],
+                  [-73.2183837890625, 41.1724519493126],
+                  [-74.40765380859375, 41.1724519493126],
+                  [-74.40765380859375, 40.34026396683983],
+                ],
+              ],
+            },
+          },
+        ],
+      };
+
+      document.addEventListener("DOMContentLoaded", async () => {
+        const dataOptions = {
+          inPoints: points,
+          inPolygons: polygons,
+          inProperty: "counts",
+          outProperty: "joined",
+        };
+
+        let results = await fetch("http://localhost:3000/api/v1/turf/collect", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(dataOptions),
+        });
+
+        results = await results.json();
+
+        console.log(results);
+        document.body.innerHTML += "hey I'm the results <br></br>"
+        document.body.innerHTML += JSON.stringify(results);
+      });
+    </script>
+  </body>
+</html>
