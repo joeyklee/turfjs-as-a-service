@@ -36,4 +36,4 @@ curl -X POST --header "Content-Type: application/json" -d '{"inPoints":"https://
 ```
 
 In the browser: 
-* [examples/turf-collect.html](/examples/turf-collect.html);
+* [examples/turf-collect.html](./examples/turf-collect.html);
