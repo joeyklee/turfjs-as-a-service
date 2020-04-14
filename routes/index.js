@@ -1,32 +1,40 @@
-const express = require('express');
+const express = require("express");
 const api = express.Router();
-const turf = require('@turf/turf');
-const axios = require('axios').default;
-
+const turf = require("@turf/turf");
+const axios = require("axios").default;
 
 /**
+ * POST
  * calls turf.collect()
  */
-api.post('/collect', async (req, res) => {
+api.post("/collect", async (req, res) => {
   try {
-    const {inPoints, inPolygons, inProperty, outProperty} = req.body;
+    const { inPoints, inPolygons, inProperty, outProperty } = req.body;
 
-    // TODO: add ability to send JSON objects
-    let points = await axios.get(inPoints);
-    points = await points.data;
-    let polygons = await axios.get(inPolygons);
-    polygons = await polygons.data;
+    let points;
+    let polygons;
 
+    if (typeof inPoints !== "object") {
+      points = await axios.get(inPoints);
+      points = await points.data;
+    } else {
+      points = Object.assign(inPoints);
+    }
 
+    if (typeof inPolygons !== "object") {
+      polygons = await axios.get(inPolygons);
+      polygons = await polygons.data;
+    } else {
+      polygons = Object.assign(polygons);
+    }
+
+    // spatial join
     const collected = turf.collect(polygons, points, inProperty, outProperty);
 
-   
-    res.status(201).json({data: collected});
+    res.status(201).json({ data: collected });
   } catch (error) {
     res.json(error);
   }
 });
 
-
 module.exports = api;
-
