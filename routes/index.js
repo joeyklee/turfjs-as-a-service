@@ -38,4 +38,30 @@ api.post("/collect", async (req, res) => {
   }
 });
 
+/**
+ * POST
+ * calls turf.collect()
+ */
+api.post("/buffer", async (req, res) => {
+  try {
+    const { geojson, radius, options} = req.body;
+
+    let input;
+
+    if (typeof geojson !== "object") {
+      input = await axios.get(geojson);
+      input = await input.data;
+    } else {
+      input = Object.assign({...geojson});
+    }
+
+    // spatial join
+    const buffered = turf.buffer(input, radius, options);
+
+    res.status(201).json({ data: buffered });
+  } catch (error) {
+    res.json(error);
+  }
+});
+
 module.exports = api;
