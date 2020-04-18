@@ -46,6 +46,7 @@ api.post("/buffer", async (req, res) => {
   try {
     const { geojson, radius, options} = req.body;
 
+    console.log(req.body);
     let input;
 
     if (typeof geojson !== "object") {
