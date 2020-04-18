@@ -44,10 +44,12 @@ Send JSON with the following:
 
 ```json
 {
-  "inPoints": <GeoJSON Feature Collection of Points | URL to GeoJSON>,
-  "inPolygons": <GeoJSON Feature Collection of Polygons | URL to GeoJSON>,
-  "inProperty":<String - property name in your inPoints>, 
-  "outProperty": <String - property name of the array of collected data to be added to your inPolygons>
+  "geojson": <GeoJSON Feature Collection | URL to GeoJSON>,
+  "radius": <Number>,
+  "options":<Object> { 
+    units: <String - (meters, kilometers(default), feet, miles)>, 
+    steps: <Number - how much resolution your circle should have (default: 60)>
+    }
   }
 ```
 
