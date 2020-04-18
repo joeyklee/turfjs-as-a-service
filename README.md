@@ -56,7 +56,7 @@ Send JSON with the following:
 To: 
 
 ```
-https://joeyklee-turfjs-as-a-service.glitch.me/api/v1/turf/collect
+https://joeyklee-turfjs-as-a-service.glitch.me/api/v1/turf/buffer
 ```
 
 ### Examples 
